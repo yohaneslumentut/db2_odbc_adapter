@@ -1,5 +1,5 @@
 require 'active_record'
-require 'arel/visitors/bind_visitor'
+require 'arel/visitors'
 require 'odbc'
 require 'odbc_utf8'
 
@@ -8,11 +8,9 @@ require 'odbc_adapter/database_statements'
 require 'odbc_adapter/error'
 require 'odbc_adapter/quoting'
 require 'odbc_adapter/schema_statements'
-
 require 'odbc_adapter/column'
 require 'odbc_adapter/column_metadata'
 require 'odbc_adapter/database_metadata'
-require 'odbc_adapter/registry'
 require 'odbc_adapter/version'
 
 module ActiveRecord
@@ -32,7 +30,7 @@ module ActiveRecord
           end
 
         database_metadata = ::ODBCAdapter::DatabaseMetadata.new(connection, config[:encoding_bug])
-        database_metadata.adapter_class.new(connection, logger, config, database_metadata)
+        ::ODBCAdapter::Db2Adapter.new(connection, logger, config, database_metadata)
       end
 
       private
@@ -216,3 +214,5 @@ module ActiveRecord
     end
   end
 end
+
+require "odbc_adapter/db2_adapter"

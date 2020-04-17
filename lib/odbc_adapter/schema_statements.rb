@@ -124,6 +124,7 @@ module ODBCAdapter
     end
 
     def current_database
+      byebug
       database_metadata.database_name.strip
     end
   end

@@ -21,13 +21,8 @@ module ODBCAdapter
       @values = Hash[FIELDS.map do |field|
         info = connection.get_info(ODBC.const_get(field))
         info = info.encode(Encoding.default_external, 'UTF-16LE') if info.is_a?(String) && has_encoding_bug
-
         [field, info]
       end]
-    end
-
-    def adapter_class
-      ODBCAdapter.adapter_for(dbms_name)
     end
 
     def upcase_identifiers?
