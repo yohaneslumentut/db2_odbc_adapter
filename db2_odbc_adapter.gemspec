@@ -5,10 +5,10 @@ require 'odbc_adapter/version'
 Gem::Specification.new do |spec|
   spec.name          = 'db2_odbc_adapter'
   spec.version       = ODBCAdapter::VERSION
-  spec.authors       = ['Yohanes']
+  spec.authors       = ['yohanes']
   spec.email         = ['yohanes.lumentut@gmail.com']
 
-  spec.summary       = 'An ActiveRecord DB2 ODBC adapter'
+  spec.summary       = 'A Rails 6+ ActiveRecord DB2 ODBC adapter'
   spec.homepage      = 'https://github.com/yohaneslumentut/db2_odbc_adapter'
   spec.license       = 'MIT'
 

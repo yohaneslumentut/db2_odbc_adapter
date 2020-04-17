@@ -1,7 +1,7 @@
-# ODBCAdapter
+# DB2 ODBCAdapter
 
 An ActiveRecord DB2 ODBC adapter. 
-It is a fork of [ActiveRecord odbc_adapter](https://github.com/localytics/odbc_adapter) with a minor heck so that it can work only with DB2 Connection at Rails 6+.
+It is a fork of [ActiveRecord odbc_adapter](https://github.com/localytics/odbc_adapter) with a minor hack so that it can work only with DB2 Connection on Rails 6+.
 
 ## Installation
 
@@ -14,12 +14,14 @@ gem 'db2_odbc_adapter'
 ```
 
 And then execute:
-
+```
   $ bundle
+```
 
 Or install it yourself as:
-
+```
   $ gem install db2_odbc_adapter
+```
 
 ## Usage
 
