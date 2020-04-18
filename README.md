@@ -1,5 +1,7 @@
 # DB2 ODBCAdapter
 
+[![Gem Version](https://badge.fury.io/rb/db2_odbc_adapter.svg)](https://badge.fury.io/rb/db2_odbc_adapter)
+
 An ActiveRecord DB2 ODBC adapter. 
 It is a fork of [ActiveRecord odbc_adapter](https://github.com/localytics/odbc_adapter) with a minor hack so that it can work only with DB2 Connection on Rails 6+.
 
@@ -51,7 +53,7 @@ Raw SQL connection
 ```ruby
   class MyCustomModel < ActiveRecord::Base
     establish_connection :db2_connection
-    scope :method_name, -> arg {
+    scope :scope_name, -> arg {
       connection.exec_query("SELECT * FROM .........WHERE ..'#{arg}...")
     }
   end
