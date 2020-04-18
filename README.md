@@ -27,12 +27,43 @@ Or install it yourself as:
 
 ## Usage
 
-Configure your `database.yml` by either using the `dsn` option to point to a DSN that corresponds to a valid entry in your `~/etc/odbc.ini` file:
+Configure your `database.yml` by using the `dsn` to point to a DSN that corresponds to a valid entry in your `~/etc/odbc.ini` file. Since Rails 6+ support multiple database, so the database configuration is as follow: 
 
 ```
-db2_connection:             // connection name (as you wish)
-  adapter:  odbc            // compulsori
-  dsn: YourDatabaseDSN      // as in the odbc.ini file
+# config/database.yml
+
+default: &default
+.
+.
+.
+db2_connection: &db2_connection   // as you wish
+  adapter: odbc                   // compulsory 
+  dsn: YourDatabaseDSN            // as in the odbc.ini file
+
+development:
+  primary:
+    .
+    .
+    .
+  db2:
+    <<: *db2_connection
+
+test:
+  primary:
+    .
+    .
+    .
+  db2:
+    <<: *db2_connection
+
+production:
+  primary:
+    .
+    .
+    .
+  db2:
+    <<: *db2_connection
+
 ```
 
 and use it at your model as follow.
@@ -41,7 +72,7 @@ Single table connection
 
 ```ruby
   class MyTable < ActiveRecord::Base
-    establish_connection :db2_connection
+    establish_connection :db2
     self.table_name  = "TableName"       #table name at DB2 server
     self.primary_key = 'column_name'    #colum that have unique content since db2 have RRN instead of id 
   end
@@ -52,7 +83,7 @@ Raw SQL connection
 
 ```ruby
   class MyCustomModel < ActiveRecord::Base
-    establish_connection :db2_connection
+    establish_connection :db2
     scope :scope_name, -> arg {
       connection.exec_query("SELECT * FROM .........WHERE ..'#{arg}...")
     }
